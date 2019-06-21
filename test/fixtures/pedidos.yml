@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cliente: MyString
+  telefone: MyString
+  valor_total: 1.5
+  valor_vendido: 1.5
+
+two:
+  cliente: MyString
+  telefone: MyString
+  valor_total: 1.5
+  valor_vendido: 1.5
