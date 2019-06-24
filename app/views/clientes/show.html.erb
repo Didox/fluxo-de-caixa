@@ -1,0 +1,24 @@
+<div class="page-header">
+  <%= link_to clientes_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Voltar
+  <% end %>
+  <%= link_to edit_cliente_path(@cliente), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Editar
+  <% end %>
+  <h1>Mostrar cliente</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Razao social:</dt>
+  <dd><%= @cliente.razao_social %></dd>
+  <dt>Cnpj:</dt>
+  <dd><%= @cliente.cnpj %></dd>
+  <dt>Inscricao estadual:</dt>
+  <dd><%= @cliente.inscricao_estadual %></dd>
+  <dt>Inscricao municipal:</dt>
+  <dd><%= @cliente.inscricao_municipal %></dd>
+  <dt>Endereco:</dt>
+  <dd><%= @cliente.endereco %></dd>
+</dl>
