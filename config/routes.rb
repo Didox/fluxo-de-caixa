@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+  resources :administradores
   resources :pedidos do 
   	resources :pedido_produtos
   end
   
   resources :produtos
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "home#index"
+
+  get '/login', to: 'login#index'
+  post '/login', to: 'login#logar'
+  get '/sair', to: 'login#deslogar'
 end

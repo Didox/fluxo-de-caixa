@@ -1,10 +1,20 @@
 class ProdutosController < ApplicationController
   before_action :set_produto, only: [:show, :edit, :update, :destroy]
+  protect_from_forgery except: :jsonp
 
   # GET /produtos
   # GET /produtos.json
   def index
+    # headers['Access-Control-Allow-Origin'] = '*'
+    # headers['Access-Control-Allow-Methods'] = 'GET,POST'
+    # headers['Access-Control-Request-Method'] = '*'
+    # headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept'
+
     @produtos = Produto.all
+  end
+
+  def jsonp
+    render inline: "#{params[:callback]}(#{Produto.all.to_json})", content_type: "text/javascript"
   end
 
   # GET /produtos/1

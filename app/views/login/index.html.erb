@@ -1,0 +1,40 @@
+<div class="login">
+  <div class="page-header col-md-6 col-md-offset-3">
+    <h2 class="form-signin-heading">Digite usuário e senha para acessar o sistema</h2>
+  </div>
+
+  <%= form_for("login", html: { class: "form-horizontal col-md-6 col-md-offset-3", role: "form" }) do |f| %>
+    <% if flash[:erro].present? %>
+      <div class="alert alert-danger alert-dismissable" role="alert">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
+        <ul>
+          <li><%= flash[:erro] %></li>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :email, 'Email', class: "col-sm-2 control-label" %><br>
+      <div class="col-sm-10">
+      <%= f.text_field :email, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :senha, 'Senha', class: "col-sm-2 control-label" %><br>
+      <div class="col-sm-10">
+      <%= f.password_field :senha, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :lembrar, 'Deixe me logado', class: "col-sm-2 control-label" %><br>
+      <div class="col-sm-10">
+      <input type="checkbox" value="1" checked="checked" name="login[lembrar]" id="login_lembrar">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= f.submit 'Logar', class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>
