@@ -5,7 +5,7 @@ class PedidoProdutosController < ApplicationController
   # GET /pedido_produtos
   # GET /pedido_produtos.json
   def index
-    @pedido_produtos = PedidoProduto.where(pedido_id: @pedido.id)
+    @pedido_produtos = PedidoProduto.where(pedido: @pedido)
   end
 
   # GET /pedido_produtos/1
@@ -30,7 +30,7 @@ class PedidoProdutosController < ApplicationController
 
     respond_to do |format|
       if @pedido_produto.save
-        format.html { redirect_to pedido_pedido_produto_path(@pedido, @pedido_produto), notice: 'Pedido produto was successfully created.' }
+        format.html { redirect_to pedido_pedido_produtos_url(@pedido), notice: 'Pedido produto was successfully created.' }
         format.json { render :show, status: :created, location: @pedido_produto }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class PedidoProdutosController < ApplicationController
   def update
     respond_to do |format|
       if @pedido_produto.update(pedido_produto_params)
-        format.html { redirect_to pedido_pedido_produto_path(@pedido, @pedido_produto), notice: 'Pedido produto was successfully updated.' }
+        format.html { redirect_to pedido_pedido_produtos_url(@pedido), notice: 'Pedido produto was successfully updated.' }
         format.json { render :show, status: :ok, location: @pedido_produto }
       else
         format.html { render :edit }
@@ -64,7 +64,6 @@ class PedidoProdutosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_pedido
       @pedido = Pedido.find(params[:pedido_id])
     end
@@ -75,6 +74,6 @@ class PedidoProdutosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pedido_produto_params
-      params.require(:pedido_produto).permit(:produto_id, :pedido_id, :quantidade)
+      params.require(:pedido_produto).permit(:pedido_id, :nome, :valor)
     end
 end

@@ -17,7 +17,7 @@ class PedidoProdutosControllerTest < ActionDispatch::IntegrationTest
 
   test "should create pedido_produto" do
     assert_difference('PedidoProduto.count') do
-      post pedido_produtos_url, params: { pedido_produto: { pedido_id: @pedido_produto.pedido_id, produto_id: @pedido_produto.produto_id, quantidade: @pedido_produto.quantidade } }
+      post pedido_produtos_url, params: { pedido_produto: { nome: @pedido_produto.nome, pedido_id: @pedido_produto.pedido_id, valor: @pedido_produto.valor } }
     end
 
     assert_redirected_to pedido_produto_url(PedidoProduto.last)
@@ -34,7 +34,7 @@ class PedidoProdutosControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update pedido_produto" do
-    patch pedido_produto_url(@pedido_produto), params: { pedido_produto: { pedido_id: @pedido_produto.pedido_id, produto_id: @pedido_produto.produto_id, quantidade: @pedido_produto.quantidade } }
+    patch pedido_produto_url(@pedido_produto), params: { pedido_produto: { nome: @pedido_produto.nome, pedido_id: @pedido_produto.pedido_id, valor: @pedido_produto.valor } }
     assert_redirected_to pedido_produto_url(@pedido_produto)
   end
 

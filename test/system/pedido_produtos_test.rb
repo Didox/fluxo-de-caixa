@@ -14,9 +14,9 @@ class PedidoProdutosTest < ApplicationSystemTestCase
     visit pedido_produtos_url
     click_on "New Pedido Produto"
 
+    fill_in "Nome", with: @pedido_produto.nome
     fill_in "Pedido", with: @pedido_produto.pedido_id
-    fill_in "Produto", with: @pedido_produto.produto_id
-    fill_in "Quantidade", with: @pedido_produto.quantidade
+    fill_in "Valor", with: @pedido_produto.valor
     click_on "Create Pedido produto"
 
     assert_text "Pedido produto was successfully created"
@@ -27,9 +27,9 @@ class PedidoProdutosTest < ApplicationSystemTestCase
     visit pedido_produtos_url
     click_on "Edit", match: :first
 
+    fill_in "Nome", with: @pedido_produto.nome
     fill_in "Pedido", with: @pedido_produto.pedido_id
-    fill_in "Produto", with: @pedido_produto.produto_id
-    fill_in "Quantidade", with: @pedido_produto.quantidade
+    fill_in "Valor", with: @pedido_produto.valor
     click_on "Update Pedido produto"
 
     assert_text "Pedido produto was successfully updated"

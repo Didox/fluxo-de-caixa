@@ -1,0 +1,18 @@
+<div class="page-header">
+  <%= link_to veiculos_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Voltar
+  <% end %>
+  <%= link_to edit_veiculo_path(@veiculo), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Editar
+  <% end %>
+  <h1>Mostrar veiculo</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Cliente:</dt>
+  <dd><%= "#{@veiculo.cliente.razao_social} - #{@veiculo.cliente.cnpj}" %></dd>
+  <dt>Placa:</dt>
+  <dd><%= @veiculo.placa %></dd>
+</dl>

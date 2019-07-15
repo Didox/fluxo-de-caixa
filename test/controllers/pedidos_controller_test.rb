@@ -17,7 +17,7 @@ class PedidosControllerTest < ActionDispatch::IntegrationTest
 
   test "should create pedido" do
     assert_difference('Pedido.count') do
-      post pedidos_url, params: { pedido: { cliente: @pedido.cliente, telefone: @pedido.telefone, valor_total: @pedido.valor_total, valor_vendido: @pedido.valor_vendido } }
+      post pedidos_url, params: { pedido: { data_emissao_fatura: @pedido.data_emissao_fatura, data_fim: @pedido.data_fim, data_inicio: @pedido.data_inicio, descricao: @pedido.descricao, numero_fatura: @pedido.numero_fatura, placa: @pedido.placa, valor: @pedido.valor, vencimento: @pedido.vencimento } }
     end
 
     assert_redirected_to pedido_url(Pedido.last)
@@ -34,7 +34,7 @@ class PedidosControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update pedido" do
-    patch pedido_url(@pedido), params: { pedido: { cliente: @pedido.cliente, telefone: @pedido.telefone, valor_total: @pedido.valor_total, valor_vendido: @pedido.valor_vendido } }
+    patch pedido_url(@pedido), params: { pedido: { data_emissao_fatura: @pedido.data_emissao_fatura, data_fim: @pedido.data_fim, data_inicio: @pedido.data_inicio, descricao: @pedido.descricao, numero_fatura: @pedido.numero_fatura, placa: @pedido.placa, valor: @pedido.valor, vencimento: @pedido.vencimento } }
     assert_redirected_to pedido_url(@pedido)
   end
 

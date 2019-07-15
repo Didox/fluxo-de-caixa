@@ -14,10 +14,14 @@ class PedidosTest < ApplicationSystemTestCase
     visit pedidos_url
     click_on "New Pedido"
 
-    fill_in "Cliente", with: @pedido.cliente
-    fill_in "Telefone", with: @pedido.telefone
-    fill_in "Valor total", with: @pedido.valor_total
-    fill_in "Valor vendido", with: @pedido.valor_vendido
+    fill_in "Data emissao fatura", with: @pedido.data_emissao_fatura
+    fill_in "Data fim", with: @pedido.data_fim
+    fill_in "Data inicio", with: @pedido.data_inicio
+    fill_in "Descricao", with: @pedido.descricao
+    fill_in "Numero fatura", with: @pedido.numero_fatura
+    fill_in "Placa", with: @pedido.placa
+    fill_in "Valor", with: @pedido.valor
+    fill_in "Vencimento", with: @pedido.vencimento
     click_on "Create Pedido"
 
     assert_text "Pedido was successfully created"
@@ -28,10 +32,14 @@ class PedidosTest < ApplicationSystemTestCase
     visit pedidos_url
     click_on "Edit", match: :first
 
-    fill_in "Cliente", with: @pedido.cliente
-    fill_in "Telefone", with: @pedido.telefone
-    fill_in "Valor total", with: @pedido.valor_total
-    fill_in "Valor vendido", with: @pedido.valor_vendido
+    fill_in "Data emissao fatura", with: @pedido.data_emissao_fatura
+    fill_in "Data fim", with: @pedido.data_fim
+    fill_in "Data inicio", with: @pedido.data_inicio
+    fill_in "Descricao", with: @pedido.descricao
+    fill_in "Numero fatura", with: @pedido.numero_fatura
+    fill_in "Placa", with: @pedido.placa
+    fill_in "Valor", with: @pedido.valor
+    fill_in "Vencimento", with: @pedido.vencimento
     click_on "Update Pedido"
 
     assert_text "Pedido was successfully updated"

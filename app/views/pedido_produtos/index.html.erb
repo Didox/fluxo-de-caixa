@@ -10,8 +10,8 @@
   <table class="table table-striped table-bordered table-hover">
     <thead>
       <tr>
-        <th>Produto</th>
-        <th>Quantidade</th>
+        <th>Nome</th>
+        <th>Valor</th>
         <th></th>
         <th></th>
         <th></th>
@@ -20,8 +20,8 @@
 
     <tbody>
       <%= content_tag_for(:tr, @pedido_produtos) do |pedido_produto| %>
-        <td><%= pedido_produto.produto.nome %></td>
-        <td><%= pedido_produto.quantidade %></td>
+        <td><%= pedido_produto.nome %></td>
+        <td><%= pedido_produto.valor %></td>
         <td><%= link_to 'Mostrar', pedido_pedido_produto_path(@pedido, pedido_produto) %></td>
         <td><%= link_to 'Editar', edit_pedido_pedido_produto_path(@pedido, pedido_produto) %></td>
         <td><%= link_to 'Apagar', pedido_pedido_produto_path(@pedido, pedido_produto), method: :delete, data: { confirm: 'Confirma?' } %></td>

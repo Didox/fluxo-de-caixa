@@ -10,11 +10,15 @@
   <table class="table table-striped table-bordered table-hover">
     <thead>
       <tr>
-        <th>Cliente</th>
-        <th>Telefone</th>
-        <th>Valor total</th>
-        <th>Valor vendido</th>
-        <th></th>
+        <th>Placa</th>
+        <th>Data emissao fatura</th>
+        <th>Descricao</th>
+        <th>Numero fatura</th>
+        <th>Data inicio</th>
+        <th>Data fim</th>
+        <th>Vencimento</th>
+        <th>Valor</th>
+        <th>Detalhes</th>
         <th></th>
         <th></th>
         <th></th>
@@ -23,11 +27,15 @@
 
     <tbody>
       <%= content_tag_for(:tr, @pedidos) do |pedido| %>
-        <td><%= pedido.cliente %></td>
-        <td><%= pedido.telefone %></td>
-        <td><%= pedido.valor_total %></td>
-        <td><%= pedido.valor_vendido %></td>
-        <td><%= link_to 'Itens', "/pedidos/#{pedido.id}/pedido_produtos" %></td>
+        <td><%= pedido.placa %></td>
+        <td><%= pedido.data_emissao_fatura %></td>
+        <td><%= pedido.descricao %></td>
+        <td><%= pedido.numero_fatura %></td>
+        <td><%= pedido.data_inicio %></td>
+        <td><%= pedido.data_fim %></td>
+        <td><%= pedido.vencimento %></td>
+        <td><%= pedido.valor %></td>
+        <td><%= link_to 'Detalhes', pedido_pedido_produtos_path(pedido) %></td>
         <td><%= link_to 'Mostrar', pedido %></td>
         <td><%= link_to 'Editar', edit_pedido_path(pedido) %></td>
         <td><%= link_to 'Apagar', pedido, method: :delete, data: { confirm: 'Confirma?' } %></td>

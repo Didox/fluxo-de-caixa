@@ -1,14 +1,11 @@
 class Pedido < ApplicationRecord
-  has_many :pedido_produtos
+  validates :placa, presence: true
 
-  def atualiza_estoque
-    self.valor_total = 0
-    self.pedido_produtos.each do |pp|
-      self.valor_total += (pp.produto.valor * pp.quantidade)
-      pp.produto.quantidade -= pp.quantidade
-      pp.produto.save
+  before_validation :valida_placa
+
+  def valida_placa
+    if Veiculo.where(placa: self.placa).count  == 0
+      errors[:base] << 'Placa do veículo não encontrada'
     end
-
-    self.save
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_24_185911) do
+ActiveRecord::Schema.define(version: 2019_07_15_174613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,20 +34,23 @@ ActiveRecord::Schema.define(version: 2019_06_24_185911) do
   end
 
   create_table "pedido_produtos", force: :cascade do |t|
-    t.bigint "produto_id"
     t.bigint "pedido_id"
-    t.integer "quantidade"
+    t.string "nome"
+    t.float "valor"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["pedido_id"], name: "index_pedido_produtos_on_pedido_id"
-    t.index ["produto_id"], name: "index_pedido_produtos_on_produto_id"
   end
 
   create_table "pedidos", force: :cascade do |t|
-    t.string "cliente"
-    t.string "telefone"
-    t.float "valor_total"
-    t.float "valor_vendido"
+    t.string "placa"
+    t.date "data_emissao_fatura"
+    t.text "descricao"
+    t.string "numero_fatura"
+    t.date "data_inicio"
+    t.date "data_fim"
+    t.date "vencimento"
+    t.float "valor"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -62,6 +65,14 @@ ActiveRecord::Schema.define(version: 2019_06_24_185911) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "veiculos", force: :cascade do |t|
+    t.string "placa"
+    t.bigint "cliente_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cliente_id"], name: "index_veiculos_on_cliente_id"
+  end
+
   add_foreign_key "pedido_produtos", "pedidos"
-  add_foreign_key "pedido_produtos", "produtos"
+  add_foreign_key "veiculos", "clientes"
 end
