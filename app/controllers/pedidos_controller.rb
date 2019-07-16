@@ -10,6 +10,23 @@ class PedidosController < ApplicationController
       return
     end
     @pedidos = Pedido.all
+
+    if params[:placa].present?
+      @pedidos = @pedidos.where("lower(placa) ilike '%#{params[:placa].downcase}%'")
+    end
+
+    if params[:descricao].present?
+      @pedidos = @pedidos.where("lower(descricao) ilike '%#{params[:descricao].downcase}%'")
+    end
+
+    if params[:emissao_inicio].present?
+      @pedidos = @pedidos.where("data_emissao_fatura >= ?", params[:emissao_inicio].to_datetime.beginning_of_day)
+    end
+
+    if params[:emissao_fim].present?
+      @pedidos = @pedidos.where("data_emissao_fatura <= ?", params[:emissao_fim].to_datetime.end_of_day)
+    end
+
     options = {page: params[:page] || 1, per_page: 10}
     @pedidos = @pedidos.paginate(options)
   end

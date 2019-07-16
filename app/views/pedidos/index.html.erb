@@ -8,14 +8,6 @@
 
 <hr>
 
-<form action="/usuarios" method="get" class="busca">
-  <div style="clear:both">
-    <label>Dados do usuário:</label>
-    <input type="text" class="form-control" name="nome" value="<%= params[:nome] %>" />
-    <input type="submit" value="Buscar" class="btn btn-primary">
-  </div>
-</form>
-<hr>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
@@ -54,13 +46,41 @@
 
 <hr>
 
+<form method="get" class="busca">
+  <div class="row">
+    <div class="col-sm-12">
+      <label>Placa:</label>
+      <input type="text" class="form-control" name="placa" value="<%= params[:placa] %>" />
+    </div>
+    <div class="col-sm-12">
+      <label>Descrição do serviço:</label>
+      <input type="text" class="form-control" name="descricao" value="<%= params[:descricao] %>" />
+    </div>
+    <div>
+      <div class="col-sm-6">
+        <label>Emissão inicio:</label>
+        <input type="date" class="form-control" name="emissao_inicio" value="<%= params[:emissao_inicio] %>" />
+      </div>
+      <div class="col-sm-6">
+        <label>Emissão fim:</label>
+        <input type="date" class="form-control" name="emissao_fim" value="<%= params[:emissao_fim] %>" />
+      </div>
+    </div>
+    <div class="col-sm-12" style="margin-top: 10px">
+      <input type="submit" value="Buscar" class="btn btn-primary">
+    </div>
+  </div>
+</form>
+
+<hr>
+
 <div class="table-responsive">
   <table class="table table-striped table-bordered table-hover">
     <thead>
       <tr>
         <th>Placa</th>
         <th>Data emissao fatura</th>
-        <th>Descricao</th>
+        <th>Descrição</th>
         <th>Numero fatura</th>
         <th>Data inicio</th>
         <th>Data fim</th>
