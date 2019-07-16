@@ -1,6 +1,8 @@
 class Pedido < ApplicationRecord
   validates :placa, presence: true
 
+  default_scope order('created_at DESC')
+  
   before_validation :valida_placa
 
   def valida_placa
