@@ -4,7 +4,14 @@ class PedidosController < ApplicationController
   # GET /pedidos
   # GET /pedidos.json
   def index
+    if params[:statusmudar].present?
+      Pedido.where(id: params[:statusmudar]).update_all(status: params[:status])
+      redirect_to "/pedidos"
+      return
+    end
     @pedidos = Pedido.all
+    options = {page: params[:page] || 1, per_page: 10}
+    @pedidos = @pedidos.paginate(options)
   end
 
   # GET /pedidos/1
