@@ -28,12 +28,12 @@
     <tbody>
       <%= content_tag_for(:tr, @pedidos) do |pedido| %>
         <td><%= pedido.placa %></td>
-        <td><%= pedido.data_emissao_fatura %></td>
+        <td><%= pedido.data_emissao_fatura.strftime("%d/%m/%Y") %></td>
         <td><%= pedido.descricao %></td>
         <td><%= pedido.numero_fatura %></td>
-        <td><%= pedido.data_inicio %></td>
-        <td><%= pedido.data_fim %></td>
-        <td><%= pedido.vencimento %></td>
+        <td><%= pedido.data_inicio.strftime("%d/%m/%Y") %></td>
+        <td><%= pedido.data_fim.strftime("%d/%m/%Y") %></td>
+        <td><%= pedido.vencimento.strftime("%d/%m/%Y") %></td>
         <td><%= pedido.valor %></td>
         <td><%= link_to 'Detalhes', pedido_pedido_produtos_path(pedido) %></td>
         <td><%= link_to 'Mostrar', pedido %></td>
