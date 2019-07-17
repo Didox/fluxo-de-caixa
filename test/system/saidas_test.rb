@@ -22,7 +22,7 @@ class SaidasTest < ApplicationSystemTestCase
     fill_in "Vencimento", with: @saida.vencimento
     click_on "Create Saida"
 
-    assert_text "Saida was successfully created"
+    assert_text "Saida foi criado com sucesso"
     click_on "Back"
   end
 
@@ -38,7 +38,7 @@ class SaidasTest < ApplicationSystemTestCase
     fill_in "Vencimento", with: @saida.vencimento
     click_on "Update Saida"
 
-    assert_text "Saida was successfully updated"
+    assert_text "Saida foi atualizado com sucesso"
     click_on "Back"
   end
 
@@ -48,6 +48,6 @@ class SaidasTest < ApplicationSystemTestCase
       click_on "Destroy", match: :first
     end
 
-    assert_text "Saida was successfully destroyed"
+    assert_text "Saida foi apagado com sucesso"
   end
 end

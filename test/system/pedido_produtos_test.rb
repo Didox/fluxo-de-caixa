@@ -19,7 +19,7 @@ class PedidoProdutosTest < ApplicationSystemTestCase
     fill_in "Valor", with: @pedido_produto.valor
     click_on "Create Pedido produto"
 
-    assert_text "Pedido produto was successfully created"
+    assert_text "Pedido produto foi criado com sucesso"
     click_on "Back"
   end
 
@@ -32,7 +32,7 @@ class PedidoProdutosTest < ApplicationSystemTestCase
     fill_in "Valor", with: @pedido_produto.valor
     click_on "Update Pedido produto"
 
-    assert_text "Pedido produto was successfully updated"
+    assert_text "Pedido produto foi atualizado com sucesso"
     click_on "Back"
   end
 
@@ -42,6 +42,6 @@ class PedidoProdutosTest < ApplicationSystemTestCase
       click_on "Destroy", match: :first
     end
 
-    assert_text "Pedido produto was successfully destroyed"
+    assert_text "Pedido produto foi apagado com sucesso"
   end
 end

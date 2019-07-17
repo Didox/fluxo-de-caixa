@@ -24,7 +24,7 @@ class PedidosTest < ApplicationSystemTestCase
     fill_in "Vencimento", with: @pedido.vencimento
     click_on "Create Pedido"
 
-    assert_text "Pedido was successfully created"
+    assert_text "Pedido foi criado com sucesso"
     click_on "Back"
   end
 
@@ -42,7 +42,7 @@ class PedidosTest < ApplicationSystemTestCase
     fill_in "Vencimento", with: @pedido.vencimento
     click_on "Update Pedido"
 
-    assert_text "Pedido was successfully updated"
+    assert_text "Pedido foi atualizado com sucesso"
     click_on "Back"
   end
 
@@ -52,6 +52,6 @@ class PedidosTest < ApplicationSystemTestCase
       click_on "Destroy", match: :first
     end
 
-    assert_text "Pedido was successfully destroyed"
+    assert_text "Pedido foi apagado com sucesso"
   end
 end

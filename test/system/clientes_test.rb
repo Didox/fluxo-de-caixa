@@ -21,7 +21,7 @@ class ClientesTest < ApplicationSystemTestCase
     fill_in "Razao social", with: @cliente.razao_social
     click_on "Create Cliente"
 
-    assert_text "Cliente was successfully created"
+    assert_text "Cliente foi criado com sucesso"
     click_on "Back"
   end
 
@@ -36,7 +36,7 @@ class ClientesTest < ApplicationSystemTestCase
     fill_in "Razao social", with: @cliente.razao_social
     click_on "Update Cliente"
 
-    assert_text "Cliente was successfully updated"
+    assert_text "Cliente foi atualizado com sucesso"
     click_on "Back"
   end
 
@@ -46,6 +46,6 @@ class ClientesTest < ApplicationSystemTestCase
       click_on "Destroy", match: :first
     end
 
-    assert_text "Cliente was successfully destroyed"
+    assert_text "Cliente foi apagado com sucesso"
   end
 end

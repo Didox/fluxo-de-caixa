@@ -19,7 +19,7 @@ class AdministradoresTest < ApplicationSystemTestCase
     fill_in "Senha", with: @administrador.senha
     click_on "Create Administrador"
 
-    assert_text "Administrador was successfully created"
+    assert_text "Administrador foi criado com sucesso"
     click_on "Back"
   end
 
@@ -32,7 +32,7 @@ class AdministradoresTest < ApplicationSystemTestCase
     fill_in "Senha", with: @administrador.senha
     click_on "Update Administrador"
 
-    assert_text "Administrador was successfully updated"
+    assert_text "Administrador foi atualizado com sucesso"
     click_on "Back"
   end
 
@@ -42,6 +42,6 @@ class AdministradoresTest < ApplicationSystemTestCase
       click_on "Destroy", match: :first
     end
 
-    assert_text "Administrador was successfully destroyed"
+    assert_text "Administrador foi apagado com sucesso"
   end
 end

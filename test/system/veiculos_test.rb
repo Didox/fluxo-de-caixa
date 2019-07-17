@@ -18,7 +18,7 @@ class VeiculosTest < ApplicationSystemTestCase
     fill_in "Placa", with: @veiculo.placa
     click_on "Create Veiculo"
 
-    assert_text "Veiculo was successfully created"
+    assert_text "Veiculo foi criado com sucesso"
     click_on "Back"
   end
 
@@ -30,7 +30,7 @@ class VeiculosTest < ApplicationSystemTestCase
     fill_in "Placa", with: @veiculo.placa
     click_on "Update Veiculo"
 
-    assert_text "Veiculo was successfully updated"
+    assert_text "Veiculo foi atualizado com sucesso"
     click_on "Back"
   end
 
@@ -40,6 +40,6 @@ class VeiculosTest < ApplicationSystemTestCase
       click_on "Destroy", match: :first
     end
 
-    assert_text "Veiculo was successfully destroyed"
+    assert_text "Veiculo foi apagado com sucesso"
   end
 end

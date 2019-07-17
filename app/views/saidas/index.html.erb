@@ -6,6 +6,12 @@
   <h1>Listando saidas</h1>
 </div>
 
+<%
+entradas = @saidas_totais.where(status: Saida::PAGO).sum(:valor)
+aguardando = @saidas_totais.where(status: Saida::AGUARDANDO).sum(:valor)
+cancelado = @saidas_totais.where(status: Saida::CANCELADO).sum(:valor)
+%>
+
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
   google.charts.load('current', {'packages':['corechart']});
@@ -15,9 +21,9 @@
 
     var data = google.visualization.arrayToDataTable([
       ['Status', 'Quantidade'],
-      ['Pago', <%= Saida.valor_total(Saida::PAGO) %>],
-      ['Aguardando', <%= Saida.valor_total(Saida::AGUARDANDO) %>],
-      ['Cacelado', <%= Saida.valor_total(Saida::CANCELADO) %>]
+      ['Pago', <%= entradas %>],
+      ['Aguardando', <%= aguardando %>],
+      ['Cacelado', <%= cancelado %>]
     ]);
 
     var options = {
@@ -35,9 +41,9 @@
     <div id="saidasChart" style="width: 100%; height: 300px;"></div>
   </div>
   <div class="col-sm-6">
-    <h3>Valor pago: <%= number_to_currency(Saida.valor_total(Saida::PAGO), :unit => "R$") %></h3>
-    <h3>Valor aguardando: <%= number_to_currency(Saida.valor_total(Saida::AGUARDANDO), :unit => "R$") %></h3>
-    <h3>Valor cancelado: <%= number_to_currency(Saida.valor_total(Saida::CANCELADO), :unit => "R$") %></h3>
+    <h3>Valor pago: <%= number_to_currency(entradas, :unit => "R$") %></h3>
+    <h3>Valor aguardando: <%= number_to_currency(aguardando, :unit => "R$") %></h3>
+    <h3>Valor cancelado: <%= number_to_currency(cancelado, :unit => "R$") %></h3>
   </div>
 </div>
 
