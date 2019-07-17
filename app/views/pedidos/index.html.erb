@@ -6,9 +6,6 @@
   <h1>Listando entradas</h1>
 </div>
 
-<hr>
-
-
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
   google.charts.load('current', {'packages':['corechart']});
@@ -58,12 +55,12 @@
     </div>
     <div>
       <div class="col-sm-6">
-        <label>Emissão inicio:</label>
-        <input type="date" class="form-control" name="emissao_inicio" value="<%= params[:emissao_inicio] %>" />
+        <label>Vencimento inicio:</label>
+        <input type="date" class="form-control" name="vencimento_inicio" value="<%= params[:vencimento_inicio] %>" />
       </div>
       <div class="col-sm-6">
-        <label>Emissão fim:</label>
-        <input type="date" class="form-control" name="emissao_fim" value="<%= params[:emissao_fim] %>" />
+        <label>Vencimento fim:</label>
+        <input type="date" class="form-control" name="vencimento_fim" value="<%= params[:vencimento_fim] %>" />
       </div>
     </div>
     <div class="col-sm-12" style="margin-top: 10px">
@@ -79,12 +76,12 @@
     <thead>
       <tr>
         <th>Placa</th>
-        <th>Data emissao fatura</th>
+        <th>Vencimento</th>
+        <th>Emissão</th>
         <th>Descrição</th>
-        <th>Numero fatura</th>
+        <th>Fatura</th>
         <th>Data inicio</th>
         <th>Data fim</th>
-        <th>Vencimento</th>
         <th>Valor</th>
         <th>Status</th>
         <th>Detalhes</th>
@@ -97,19 +94,19 @@
     <tbody>
       <%= content_tag_for(:tr, @pedidos) do |pedido| %>
         <td><%= pedido.placa %></td>
+        <td><%= pedido.vencimento.strftime("%d/%m/%Y") %></td>
         <td><%= pedido.data_emissao_fatura.strftime("%d/%m/%Y") %></td>
         <td><%= pedido.descricao %></td>
         <td><%= pedido.numero_fatura %></td>
         <td><%= pedido.data_inicio.strftime("%d/%m/%Y") %></td>
         <td><%= pedido.data_fim.strftime("%d/%m/%Y") %></td>
-        <td><%= pedido.vencimento.strftime("%d/%m/%Y") %></td>
         <td><%= pedido.valor %></td>
         <td style="text-align: center;">
           <% Pedido.todos_status.each do |id,nome| %>
             <% if pedido.status.to_s == id %>
-              <a class="btn btn-primary" style="margin-bottom: 10px; width: 100px"><%= nome %></a>
+              <a class="btn btn-primary" style="margin-bottom: 10px; width: 100px"><%= nome %></a><br>
             <% else %>
-              <a href="?statusmudar=<%= pedido.id %>&status=<%= id %>" class="btn btn-default" data-confirm="Confirma?" style="margin-bottom: 10px; width: 100px"><%= nome %></a>
+              <a href="?statusmudar=<%= pedido.id %>&status=<%= id %>" class="btn btn-default" data-confirm="Confirma?" style="margin-bottom: 10px; width: 100px"><%= nome %></a><br>
             <% end %>
           <% end %>
         </td>

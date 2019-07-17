@@ -19,12 +19,12 @@ class PedidosController < ApplicationController
       @pedidos = @pedidos.where("lower(descricao) ilike '%#{params[:descricao].downcase}%'")
     end
 
-    if params[:emissao_inicio].present?
-      @pedidos = @pedidos.where("data_emissao_fatura >= ?", params[:emissao_inicio].to_datetime.beginning_of_day)
+    if params[:vencimento_inicio].present?
+      @pedidos = @pedidos.where("vencimento >= ?", params[:vencimento_inicio].to_datetime.beginning_of_day)
     end
 
-    if params[:emissao_fim].present?
-      @pedidos = @pedidos.where("data_emissao_fatura <= ?", params[:emissao_fim].to_datetime.end_of_day)
+    if params[:vencimento_fim].present?
+      @pedidos = @pedidos.where("vencimento <= ?", params[:vencimento_fim].to_datetime.end_of_day)
     end
 
     options = {page: params[:page] || 1, per_page: 10}
