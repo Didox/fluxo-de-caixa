@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :saidas
   resources :pedidos do 
     resources :pedido_produtos
   end

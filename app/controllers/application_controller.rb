@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   def authenticate_user!
     if cookies[:manobra_admin].blank?
       redirect_to "/login"
+    else
+      administrador
     end
   end
 

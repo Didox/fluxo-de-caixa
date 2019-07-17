@@ -1,0 +1,104 @@
+<div class="page-header">
+  <%= link_to new_saida_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    Novo Saida
+  <% end %>
+  <h1>Listando saidas</h1>
+</div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+
+    var data = google.visualization.arrayToDataTable([
+      ['Status', 'Quantidade'],
+      ['Pago', <%= Saida.valor_total(Saida::PAGO) %>],
+      ['Aguardando', <%= Saida.valor_total(Saida::AGUARDANDO) %>],
+      ['Cacelado', <%= Saida.valor_total(Saida::CANCELADO) %>]
+    ]);
+
+    var options = {
+      title: 'Histórico de pagamentos'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('saidasChart'));
+
+    chart.draw(data, options);
+  }
+</script>
+
+<div class="row">
+  <div class="col-sm-6">
+    <div id="saidasChart" style="width: 100%; height: 300px;"></div>
+  </div>
+  <div class="col-sm-6">
+    <h3>Valor pago: <%= number_to_currency(Saida.valor_total(Saida::PAGO), :unit => "R$") %></h3>
+    <h3>Valor aguardando: <%= number_to_currency(Saida.valor_total(Saida::AGUARDANDO), :unit => "R$") %></h3>
+    <h3>Valor cancelado: <%= number_to_currency(Saida.valor_total(Saida::CANCELADO), :unit => "R$") %></h3>
+  </div>
+</div>
+
+<hr>
+
+<form method="get" class="busca">
+  <div class="row">
+    <div class="col-sm-12">
+      <label>Placa:</label>
+      <input type="text" class="form-control" name="placa" value="<%= params[:placa] %>" />
+    </div>
+    <div class="col-sm-12">
+      <label>Descrição do serviço:</label>
+      <input type="text" class="form-control" name="descricao" value="<%= params[:descricao] %>" />
+    </div>
+    <div>
+      <div class="col-sm-6">
+        <label>Vencimento inicio:</label>
+        <input type="date" class="form-control" name="vencimento_inicio" value="<%= params[:vencimento_inicio] %>" />
+      </div>
+      <div class="col-sm-6">
+        <label>Vencimento fim:</label>
+        <input type="date" class="form-control" name="vencimento_fim" value="<%= params[:vencimento_fim] %>" />
+      </div>
+    </div>
+    <div class="col-sm-12" style="margin-top: 10px">
+      <input type="submit" value="Buscar" class="btn btn-primary">
+    </div>
+  </div>
+</form>
+
+<hr>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Placa</th>
+        <th>Data emissao fatura</th>
+        <th>Descricao</th>
+        <th>Numero fatura</th>
+        <th>Vencimento</th>
+        <th>Valor</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @saidas) do |saida| %>
+        <td><%= saida.placa %></td>
+        <td><%= saida.data_emissao_fatura.strftime("%d/%m/%Y") %></td>
+        <td><%= saida.descricao %></td>
+        <td><%= saida.numero_fatura %></td>
+        <td><%= saida.vencimento.strftime("%d/%m/%Y") %></td>
+        <td><%= saida.valor %></td>
+        <td><%= link_to 'Mostrar', saida %></td>
+        <td><%= link_to 'Editar', edit_saida_path(saida) %></td>
+        <td><%= link_to 'Apagar', saida, method: :delete, data: { confirm: 'Confirma?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

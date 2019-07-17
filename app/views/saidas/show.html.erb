@@ -1,0 +1,26 @@
+<div class="page-header">
+  <%= link_to saidas_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Voltar
+  <% end %>
+  <%= link_to edit_saida_path(@saida), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Editar
+  <% end %>
+  <h1>Mostrar saida</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Placa:</dt>
+  <dd><%= @saida.placa %></dd>
+  <dt>Data emissao fatura:</dt>
+  <dd><%= @saida.data_emissao_fatura %></dd>
+  <dt>Descricao:</dt>
+  <dd><%= @saida.descricao %></dd>
+  <dt>Numero fatura:</dt>
+  <dd><%= @saida.numero_fatura %></dd>
+  <dt>Vencimento:</dt>
+  <dd><%= @saida.vencimento %></dd>
+  <dt>Valor:</dt>
+  <dd><%= @saida.valor %></dd>
+</dl>

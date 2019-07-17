@@ -31,10 +31,11 @@
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li <% if params[:controller] == "home" %>class="active"<% end %>><a href="/">Home</a></li>
+          <li <% if params[:controller] == "home" %>class="active"<% end %>><a href="/">Caixa</a></li>
           <li <% if params[:controller] == "clientes" %>class="active"<% end %>><a href="/clientes">Clientes</a></li>
           <li <% if params[:controller] == "veiculos" %>class="active"<% end %>><a href="/veiculos">Veículo</a></li>
-          <li <% if params[:controller] == "pedidos" %>class="active"<% end %>><a href="/pedidos">Pedidos</a></li>
+          <li <% if params[:controller] == "pedidos" %>class="active"<% end %>><a href="/pedidos">Entrada</a></li>
+          <li <% if params[:controller] == "saidas" %>class="active"<% end %>><a href="/saidas">Saida</a></li>
           <li <% if params[:controller] == "administradores" %>class="active"<% end %>><a href="/administradores">Administradores</a></li>
           <li><a href="/sair">Sair</a></li>
         </ul>

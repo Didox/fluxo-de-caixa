@@ -1,25 +1,66 @@
-<div class="page-header">
-  <h1>Produtos com estoque baixo</h1>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-3">Oi <%= @adm.nome %></h1>
+    <p>
+      Este é o seu fluxo de caixa, desejo muita prosperidade, acredito demais no potencial de vocês. 
+    </p>
+    <p>
+      <a class="btn btn-success btn-lg" href="/pedidos" role="button">Lançar entradas &raquo;</a>
+      <a class="btn btn-warning btn-lg" href="/saidas" role="button">Lançar saidas &raquo;</a>
+    </p>
+  </div>
 </div>
 
-<% if @produtos.count > 0 %>
-<div class="table-responsive">
-  <table class="table table-striped table-bordered table-hover">
-    <thead>
-      <tr>
-        <th>Nome</th>
-        <th>Quantidade</th>
-      </tr>
-    </thead>
+<%
+entradas = Pedido.valor_total(Pedido::PAGO)
+saidas = Saida.valor_total(Saida::PAGO)
+lucro = (entradas - saidas)
+%>
 
-    <tbody>
-      <%= content_tag_for(:tr, @produtos) do |produto| %>
-        <td style="color: red"><%= produto.nome %></td>
-        <td style="color: red"><%= produto.quantidade %></td>
-      <% end %>
-    </tbody>
-  </table>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+
+    var data = google.visualization.arrayToDataTable([
+      ['Status', 'Quantidade'],
+      ['Entradas', <%= entradas %>],
+      ['Saidas', <%= saidas %>],
+      ['Lucro', <%= lucro %>],
+    ]);
+
+    var options = {
+      title: 'Histórico de pagamentos'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('pedidosChart'));
+
+    chart.draw(data, options);
+  }
+</script>
+
+<div class="row">
+  <div class="col-sm-6">
+    <div id="pedidosChart" style="width: 100%; height: 300px;"></div>
+  </div>
+  <div class="col-sm-6">
+    <h3>
+      Total de entradas mês <%= Time.now.strftime("%m/%Y") %><br>
+      <span style="color: green;font-size: 40px"><%= number_to_currency(entradas, :unit => "R$") %></span>
+    </h3>
+    <h3>
+      Total de saídas mês <%= Time.now.strftime("%m/%Y") %><br>
+      <span style="color: red;font-size: 40px"><%= number_to_currency(saidas, :unit => "R$") %></span>
+    </h3>
+
+    <h3>
+      Lucro mês <%= Time.now.strftime("%m/%Y") %><br>
+      <span style="color: <%= lucro < 0 ? "red" : "green" %>;font-size: 40px"><%= number_to_currency(lucro, :unit => "R$") %></span>
+    </h3>
+  </div>
 </div>
-<% else %>
-  <h2>Nenhum produto com estoque baixo, bora vender !!!</h2>
-<% end %>
+
+<hr>
