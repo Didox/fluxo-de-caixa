@@ -22,7 +22,7 @@
           <option <% if tipo_saida.tipo == @saida.placa %>selected="selected"<% end %> value="<%= tipo_saida.tipo %>"><%= tipo_saida.tipo %></option>
         <% end %>
       </select>
-      <% if params[:placa].present? && TiposSaida.where(tipo: params[:placa]).count == 0 %>
+      <% if @saida.placa.present? && TiposSaida.where(tipo: @saida.placa).count == 0 %>
         <script type="text/javascript">mostraPlaca();</script>
       <% end %>
     </div>
