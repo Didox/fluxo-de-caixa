@@ -52,8 +52,16 @@ cancelado = @saidas_totais.where(status: Saida::CANCELADO).sum(:valor)
 <form method="get" class="busca">
   <div class="row">
     <div class="col-sm-12">
-      <label>Placa:</label>
-      <input type="text" class="form-control" name="placa" value="<%= params[:placa] %>" />
+      <label>Tipo de saída:</label>
+      <input type="text" class="form-control" name="placa" id="placa" value="<%= params[:placa] %>" style="display: none" />
+      <select class="form-control" id="tipoSaidaSelect" onchange="mudaParaPlaca(this.value)">
+        <% TiposSaida.all.each do |tipo_saida| %>
+          <option <% if tipo_saida.tipo == params[:placa] %>selected="selected"<% end %> value="<%= tipo_saida.tipo %>"><%= tipo_saida.tipo %></option>
+        <% end %>
+      </select>
+      <% if params[:placa].present? && TiposSaida.where(tipo: params[:placa]).count == 0 %>
+        <script type="text/javascript">mostraPlaca();</script>
+      <% end %>
     </div>
     <div class="col-sm-12">
       <label>Descrição do serviço:</label>
@@ -81,7 +89,7 @@ cancelado = @saidas_totais.where(status: Saida::CANCELADO).sum(:valor)
   <table class="table table-striped table-bordered table-hover">
     <thead>
       <tr>
-        <th>Placa</th>
+        <th>Tipo de saída</th>
         <th>Emissão</th>
         <th>Descrição</th>
         <th>Fatura</th>

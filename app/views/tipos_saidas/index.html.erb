@@ -1,0 +1,29 @@
+<div class="page-header">
+  <%= link_to new_tipos_saida_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    Novo tipo
+  <% end %>
+  <h1>Listando tipos de saída</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Tipo</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @tipos_saidas) do |tipos_saida| %>
+        <td><%= tipos_saida.tipo %></td>
+        <td><%= link_to 'Mostrar', tipos_saida %></td>
+        <td><%= link_to 'Editar', edit_tipos_saida_path(tipos_saida) %></td>
+        <td><%= link_to 'Apagar', tipos_saida, method: :delete, data: { confirm: 'Confirma?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

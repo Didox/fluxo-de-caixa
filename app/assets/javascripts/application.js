@@ -10,8 +10,25 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= requite jquery-3.4.1.min
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+
+var mudaParaPlaca = function(valor){
+  if(valor.toLowerCase() == 'placa'){ 
+    $("#placa").val("").show().focus();
+    $("#tipoSaidaSelect").hide();
+  }
+  else{
+    $("#placa").hide();
+    $("#placa").val(valor);
+    $("#tipoSaidaSelect").show();
+  }
+}
+var mostraPlaca = function(){
+   $("#placa").show().focus();
+   $("#tipoSaidaSelect").hide();
+}
