@@ -87,6 +87,7 @@ cancelado = @saidas_totais.where(status: Saida::CANCELADO).sum(:valor)
         <th>Numero fatura</th>
         <th>Vencimento</th>
         <th>Valor</th>
+        <th>Status</th>
         <th></th>
         <th></th>
         <th></th>
@@ -101,10 +102,22 @@ cancelado = @saidas_totais.where(status: Saida::CANCELADO).sum(:valor)
         <td><%= saida.numero_fatura %></td>
         <td><%= saida.vencimento.strftime("%d/%m/%Y") %></td>
         <td><%= saida.valor %></td>
+        <td style="text-align: center;">
+          <% Saida.todos_status.each do |id,nome| %>
+            <% if saida.status.to_s == id %>
+              <a class="btn btn-primary" style="margin-bottom: 10px; width: 100px"><%= nome %></a><br>
+            <% else %>
+              <a href="?statusmudar=<%= saida.id %>&status=<%= id %>" class="btn btn-default" data-confirm="Confirma?" style="margin-bottom: 10px; width: 100px"><%= nome %></a><br>
+            <% end %>
+          <% end %>
+        </td>
         <td><%= link_to 'Mostrar', saida %></td>
         <td><%= link_to 'Editar', edit_saida_path(saida) %></td>
         <td><%= link_to 'Apagar', saida, method: :delete, data: { confirm: 'Confirma?' } %></td>
       <% end %>
     </tbody>
   </table>
+  <div class="apple_pagination">
+    <%= will_paginate @pedidos, :container => false %>
+  </div>
 </div>
