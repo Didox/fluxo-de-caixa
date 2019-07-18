@@ -55,6 +55,7 @@ cancelado = @saidas_totais.where(status: Saida::CANCELADO).sum(:valor)
       <label>Tipo de saída:</label>
       <input type="text" class="form-control" name="placa" id="placa" value="<%= params[:placa] %>" style="display: none" />
       <select class="form-control" id="tipoSaidaSelect" onchange="mudaParaPlaca(this.value)">
+        <option>[Selecione]</option>
         <% TiposSaida.all.each do |tipo_saida| %>
           <option <% if tipo_saida.tipo == params[:placa] %>selected="selected"<% end %> value="<%= tipo_saida.tipo %>"><%= tipo_saida.tipo %></option>
         <% end %>
