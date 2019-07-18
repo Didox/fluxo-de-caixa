@@ -1,15 +1,7 @@
 class Saida < ApplicationRecord
   validates :placa, presence: true
-
   default_scope { order(vencimento: :desc) }
   
-  before_validation :valida_placa
-
-  def valida_placa
-    if Veiculo.where(placa: self.placa).count  == 0
-      errors[:base] << 'Placa do veículo não encontrada'
-    end
-  end
 
   PAGO = "1"
   AGUARDANDO = "2"
