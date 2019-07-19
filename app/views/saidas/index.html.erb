@@ -65,6 +65,10 @@ cancelado = @saidas_totais.where(status: Saida::CANCELADO).sum(:valor)
       <% end %>
     </div>
     <div class="col-sm-12">
+      <label>Fatura:</label>
+      <input type="text" class="form-control" name="fatura" value="<%= params[:fatura] %>" />
+    </div>
+    <div class="col-sm-12">
       <label>Descrição do serviço:</label>
       <input type="text" class="form-control" name="descricao" value="<%= params[:descricao] %>" />
     </div>

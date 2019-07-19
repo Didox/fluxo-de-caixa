@@ -15,6 +15,10 @@ class SaidasController < ApplicationController
       @saidas = @saidas.where("lower(placa) ilike '%#{params[:placa].downcase}%'")
     end
 
+    if params[:fatura].present?
+      @saidas = @saidas.where("lower(numero_fatura) ilike '%#{params[:fatura].downcase}%'")
+    end
+
     if params[:descricao].present?
       @saidas = @saidas.where("lower(descricao) ilike '%#{params[:descricao].downcase}%'")
     end
