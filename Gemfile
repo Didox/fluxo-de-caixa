@@ -30,6 +30,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-generators'
 gem 'record_tag_helper', '~> 1.0'
 gem "will_paginate"
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

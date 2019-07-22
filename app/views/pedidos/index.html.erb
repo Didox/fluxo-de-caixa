@@ -56,6 +56,10 @@ cancelado = @pedidos_totais.where(status: Pedido::CANCELADO).sum(:valor)
       <input type="text" class="form-control" name="placa" value="<%= params[:placa] %>" />
     </div>
     <div class="col-sm-12">
+      <label>Número fatura:</label>
+      <input type="text" class="form-control" name="numero_fatura" value="<%= params[:numero_fatura] %>" />
+    </div>
+    <div class="col-sm-12">
       <label>Descrição do serviço:</label>
       <input type="text" class="form-control" name="descricao" value="<%= params[:descricao] %>" />
     </div>

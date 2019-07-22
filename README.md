@@ -25,5 +25,5 @@ Things you may want to cover:
 
 
 
-640.times{|i| Fatura.new(cliente_id:1).save}
+646.times{|i| Fatura.new(cliente_id:1).save}
 Fatura.destroy_all

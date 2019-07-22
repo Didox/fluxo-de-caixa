@@ -18,6 +18,10 @@ class FaturasController < ApplicationController
     @faturas = @faturas.paginate(options)
   end
 
+  def pdf
+    @fatura = Fatura.find(params[:fatura_id])
+  end
+
   # GET /faturas/1
   # GET /faturas/1.json
   def show

@@ -14,6 +14,9 @@ class PedidosController < ApplicationController
     if params[:placa].present?
       @pedidos = @pedidos.where("lower(placa) ilike '%#{params[:placa].downcase}%'")
     end
+    if params[:numero_fatura].present?
+      @pedidos = @pedidos.where(numero_fatura: params[:numero_fatura])
+    end
 
     if params[:descricao].present?
       @pedidos = @pedidos.where("lower(descricao) ilike '%#{params[:descricao].downcase}%'")
