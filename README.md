@@ -22,3 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+
+640.times{|i| Fatura.new(cliente_id:1).save}
+Fatura.destroy_all

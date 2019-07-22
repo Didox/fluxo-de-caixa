@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_18_143909) do
+ActiveRecord::Schema.define(version: 2019_07_19_153357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,28 @@ ActiveRecord::Schema.define(version: 2019_07_18_143909) do
     t.text "endereco"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "faturas", force: :cascade do |t|
+    t.datetime "emissao"
+    t.datetime "vencimento"
+    t.bigint "cliente_id"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cliente_id"], name: "index_faturas_on_cliente_id"
+  end
+
+  create_table "itens_faturas", force: :cascade do |t|
+    t.bigint "fatura_id"
+    t.string "placa"
+    t.text "descricao"
+    t.datetime "data_inicio"
+    t.datetime "data_fim"
+    t.float "valor"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fatura_id"], name: "index_itens_faturas_on_fatura_id"
   end
 
   create_table "pedido_produtos", force: :cascade do |t|
@@ -92,6 +114,8 @@ ActiveRecord::Schema.define(version: 2019_07_18_143909) do
     t.index ["cliente_id"], name: "index_veiculos_on_cliente_id"
   end
 
+  add_foreign_key "faturas", "clientes"
+  add_foreign_key "itens_faturas", "faturas"
   add_foreign_key "pedido_produtos", "pedidos"
   add_foreign_key "veiculos", "clientes"
 end

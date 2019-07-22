@@ -1,0 +1,48 @@
+<div class="page-header">
+  <%= link_to new_fatura_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    Novo Fatura
+  <% end %>
+  <h1>Listando faturas</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Número</th>
+        <th>Emissão</th>
+        <th>Vencimento</th>
+        <th>Cliente</th>
+        <th>Status</th>
+        <th>Itens</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @faturas) do |fatura| %>
+        <td><%= fatura.id %></td>
+        <td><%= fatura.emissao.strftime("%d/%m/%Y") %></td>
+        <td><%= fatura.vencimento.strftime("%d/%m/%Y") %></td>
+        <td><%= fatura.cliente.razao_social %></td>
+        <td style="text-align: center;">
+          <% Fatura.todos_status.each do |id,nome| %>
+            <% if fatura.status.to_s == id %>
+              <a class="btn btn-primary" style="margin-bottom: 10px; width: 100px"><%= nome %></a><br>
+            <% else %>
+              <a href="?statusmudar=<%= fatura.id %>&status=<%= id %>" class="btn btn-default" data-confirm="Confirma?" style="margin-bottom: 10px; width: 100px"><%= nome %></a><br>
+            <% end %>
+          <% end %>
+        </td>
+        <td><%= link_to 'Itens fatura', fatura_itens_faturas_path(fatura) %></td>
+        <td><%= link_to 'Editar', edit_fatura_path(fatura) %></td>
+        <td><%= link_to 'Apagar', fatura, method: :delete, data: { confirm: 'Confirma?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="apple_pagination">
+    <%= will_paginate @faturas, :container => false %>
+  </div>
+</div>

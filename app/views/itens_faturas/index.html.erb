@@ -1,0 +1,37 @@
+<div class="page-header">
+  <%= link_to new_fatura_itens_fatura_path(@fatura), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    Novo item
+  <% end %>
+  <h1>Listando itens da fatura</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Fatura</th>
+        <th>Placa</th>
+        <th>Descricao</th>
+        <th>Data inicio</th>
+        <th>Data fim</th>
+        <th>Valor</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @itens_faturas) do |itens_fatura| %>
+        <td><%= itens_fatura.fatura.id %></td>
+        <td><%= itens_fatura.placa %></td>
+        <td><%= itens_fatura.descricao %></td>
+        <td><%= itens_fatura.data_inicio.strftime("%d/%m/%Y") %></td>
+        <td><%= itens_fatura.data_fim.strftime("%d/%m/%Y") %></td>
+        <td><%= itens_fatura.valor %></td>
+        <td><%= link_to 'Editar', edit_fatura_itens_fatura_path(@fatura, itens_fatura) %></td>
+        <td><%= link_to 'Apagar', fatura_itens_fatura_path(@fatura, itens_fatura), method: :delete, data: { confirm: 'Confirma?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

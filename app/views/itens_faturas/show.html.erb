@@ -1,0 +1,26 @@
+<div class="page-header">
+  <%= link_to fatura_itens_faturas_path(@fatura), class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Voltar
+  <% end %>
+  <%= link_to edit_fatura_itens_fatura_path(@fatura, @itens_fatura), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Editar
+  <% end %>
+  <h1>Mostrar itens_fatura</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Fatura:</dt>
+  <dd><%= @itens_fatura.fatura.id %></dd>
+  <dt>Placa:</dt>
+  <dd><%= @itens_fatura.placa %></dd>
+  <dt>Descricao:</dt>
+  <dd><%= @itens_fatura.descricao %></dd>
+  <dt>Data inicio:</dt>
+  <dd><%= @itens_fatura.data_inicio %></dd>
+  <dt>Data fim:</dt>
+  <dd><%= @itens_fatura.data_fim %></dd>
+  <dt>Valor:</dt>
+  <dd><%= @itens_fatura.valor %></dd>
+</dl>

@@ -10,12 +10,12 @@
   <table class="table table-striped table-bordered table-hover">
     <thead>
       <tr>
-            <th>Razao social</th>
-            <th>Cnpj</th>
-            <th>Inscricao estadual</th>
-            <th>Inscricao municipal</th>
-            <th>Endereco</th>
-            <th></th>
+        <th>Razao social</th>
+        <th>Cnpj</th>
+        <th>Inscricao estadual</th>
+        <th>Inscricao municipal</th>
+        <th>Endereco</th>
+        <th></th>
         <th></th>
         <th></th>
       </tr>
@@ -23,12 +23,12 @@
 
     <tbody>
       <%= content_tag_for(:tr, @clientes) do |cliente| %>
-            <td><%= cliente.razao_social %></td>
-            <td><%= cliente.cnpj %></td>
-            <td><%= cliente.inscricao_estadual %></td>
-            <td><%= cliente.inscricao_municipal %></td>
-            <td><%= cliente.endereco %></td>
-            <td><%= link_to 'Mostrar', cliente %></td>
+        <td><%= cliente.razao_social %></td>
+        <td><%= cliente.cnpj %></td>
+        <td><%= cliente.inscricao_estadual %></td>
+        <td><%= cliente.inscricao_municipal %></td>
+        <td><%= cliente.endereco %></td>
+        <td><%= link_to 'Mostrar', cliente %></td>
         <td><%= link_to 'Editar', edit_cliente_path(cliente) %></td>
         <td><%= link_to 'Apagar', cliente, method: :delete, data: { confirm: 'Confirma?' } %></td>
       <% end %>

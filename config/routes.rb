@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :faturas do
+    resources :itens_faturas
+  end
   resources :tipos_saidas
   resources :saidas
   resources :pedidos do 

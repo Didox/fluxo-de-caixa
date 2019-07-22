@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fatura: one
+  placa: MyString
+  descricao: MyText
+  data_inicio: 2019-07-19 12:33:58
+  data_fim: 2019-07-19 12:33:58
+  valor: 1.5
+
+two:
+  fatura: two
+  placa: MyString
+  descricao: MyText
+  data_inicio: 2019-07-19 12:33:58
+  data_fim: 2019-07-19 12:33:58
+  valor: 1.5

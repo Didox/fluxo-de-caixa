@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  emissao: 2019-07-19 12:33:22
+  vencimento: 2019-07-19 12:33:22
+  cliente: one
+  status: 1
+
+two:
+  emissao: 2019-07-19 12:33:22
+  vencimento: 2019-07-19 12:33:22
+  cliente: two
+  status: 1
