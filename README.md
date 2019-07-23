@@ -25,5 +25,6 @@ Things you may want to cover:
 
 
 
-646.times{|i| Fatura.new(cliente_id:1).save}
+ActiveRecord::Base.connection.exec_query("TRUNCATE table faturas RESTART IDENTITY cascade")
+639.times{|i| Fatura.new(cliente_id:1).save}
 Fatura.destroy_all

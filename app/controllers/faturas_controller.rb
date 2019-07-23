@@ -18,13 +18,16 @@ class FaturasController < ApplicationController
     @faturas = @faturas.paginate(options)
   end
 
-  def pdf
-    @fatura = Fatura.find(params[:fatura_id])
-  end
-
   # GET /faturas/1
   # GET /faturas/1.json
   def show
+    render pdf: "Invoice No",
+      page_size: 'A4',
+      template: "faturas/show.html.erb",
+      layout: "pdf.html",
+      lowquality: true,
+      zoom: 1,
+      dpi: 75
   end
 
   # GET /faturas/new

@@ -2,7 +2,7 @@ class Fatura < ApplicationRecord
   belongs_to :cliente
   has_many :itens_faturas
 
-  default_scope { order(emissao: :desc) }
+  default_scope { order(id: :desc) }
 
   before_validation :update_status
   after_save :update_status_entradas

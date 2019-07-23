@@ -1,22 +1,116 @@
-<div class="page-header">
-  <%= link_to faturas_path, class: 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    Voltar
-  <% end %>
-  <%= link_to edit_fatura_path(@fatura), class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-pencil"></span>
-    Editar
-  <% end %>
-  <h1>Mostrar fatura</h1>
+<div style="font-family: arial;font-size: 30px">
+  <hr>
+  <%= pdf_image_tag('/logo.png', :style=>"margin:0px;padding:0px", :width=>"380", :height=>"133") %>
+  <h1 style="font-family: arial;font-size: 50px;display: inline-block;position: absolute;text-align: right;">
+    Manobra transportes<br>
+    <span style="color: #337ab7;font-size: 30px;font-weight: bold;">Fatura</span>
+  </h1>
+  <hr>
+  <div style="background-color: #1a215c;color: #fff;padding: 10px;margin-bottom: 5px;">
+    PRESTADOR
+  </div>
+  <table style="font-size: 20px;width: 100%">
+    <tr>
+      <td>
+        Razão Social:
+      </td>
+      <td>
+        Rubinaldo da Cruz Azevedo Transportes -ME
+      </td>
+    </tr>
+    <tr>
+      <td>
+        CNPJ:
+      </td>
+      <td>
+        14.289.423/0001-88
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Ins. Est:
+      </td>
+      <td>
+        513.092.525.110
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Ins. Mun:
+      </td>
+      <td>
+        17.583
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Endereço:
+      </td>
+      <td>
+        Avenida 3,1043, Bom Retiro, CEP: 13.142-128, Paulína - São Paulo
+      </td>
+    </tr>
+    <tr>
+      <td>
+        CEP:
+      </td>
+      <td>
+        13.142-128
+      </td>
+    </tr>
+  </table>
+  <br>
+  <div style="background-color: #1a215c;color: #fff;padding: 10px;margin-bottom: 5px;">
+    TOMADOR
+  </div>
+  <table style="font-size: 20px;width: 100%">
+    <tr>
+      <td>
+        Razão Social:
+      </td>
+      <td>
+        <%= @fatura.cliente.razao_social %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        CNPJ:
+      </td>
+      <td>
+        <%= @fatura.cliente.cnpj %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Ins. Est:
+      </td>
+      <td>
+        <%= @fatura.cliente.inscricao_estadual %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Ins. Mun:
+      </td>
+      <td>
+        <%= @fatura.cliente.inscricao_municipal %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Endereço:
+      </td>
+      <td>
+        <%= @fatura.cliente.endereco %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        CEP:
+      </td>
+      <td>
+        <%= @fatura.cliente.endereco.scan(/CEP.*/).first.scan(/\d+/).join.sub(/([A-Z0-9]+)([A-Z0-9]{6})/, '\1.\2').sub(/([A-Z0-9]+)([A-Z0-9]{3})/, '\1-\2') rescue "" %>
+      </td>
+    </tr>
+  </table>
 </div>
-
-<dl class="dl-horizontal">
-  <dt>Emissão:</dt>
-  <dd><%= @fatura.emissao.strftime("%d/%m/%Y") %></dd>
-  <dt>Vencimento:</dt>
-  <dd><%= @fatura.vencimento.strftime("%d/%m/%Y") %></dd>
-  <dt>Cliente:</dt>
-  <dd><%= @fatura.cliente.razao_social %></dd>
-  <dt>Status:</dt>
-  <dd><%= @fatura.status_desc %></dd>
-</dl>

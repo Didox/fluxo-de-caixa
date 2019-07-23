@@ -16,6 +16,7 @@
         <th>Cliente</th>
         <th>Status</th>
         <th>Itens</th>
+        <th>Fatura PDF</th>
         <th></th>
         <th></th>
       </tr>
@@ -37,6 +38,7 @@
           <% end %>
         </td>
         <td><%= link_to 'Itens fatura', fatura_itens_faturas_path(fatura) %></td>
+        <td><%= link_to 'PDF', fatura_path(fatura), target:"_blank" %></td>
         <td><%= link_to 'Editar', edit_fatura_path(fatura) %></td>
         <td><%= link_to 'Apagar', fatura, method: :delete, data: { confirm: 'Confirma?' } %></td>
       <% end %>
