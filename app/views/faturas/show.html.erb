@@ -11,7 +11,7 @@
   </div>
   <table style="font-size: 20px;width: 100%">
     <tr>
-      <td>
+      <td style="width: 200px">
         Razão Social:
       </td>
       <td>
@@ -65,7 +65,7 @@
   </div>
   <table style="font-size: 20px;width: 100%">
     <tr>
-      <td>
+      <td style="width: 200px">
         Razão Social:
       </td>
       <td>
@@ -113,4 +113,77 @@
       </td>
     </tr>
   </table>
+  <br>
+  <style type="text/css">
+    .gridItensPedido{
+      font-size: 20px;width: 100%
+    }
+    .gridItensPedido th{
+      border: 1px solid #000;
+      font-weight: bold;
+    }
+    .gridItensPedido td{
+      border: 1px solid #696969;
+      text-align: center;
+    }
+  </style>
+  <table class="gridItensPedido">
+    <tr>
+      <th>Fatura:</th>
+      <th>Emissão:</th>
+      <th>Vencimento:</th>
+    </tr>
+    <tr>
+      <th>
+        <%= @fatura.id %>
+      </th>
+      <th>
+        <%= @fatura.emissao.strftime("%d/%m/%Y") %>
+      </th>
+      <th>
+        <%= @fatura.vencimento.strftime("%d/%m/%Y") %>
+      </th>
+    </tr>
+    <tr>
+      <th>Relação de serviços:</th>
+      <th>Data:</th>
+      <th>Valor Diária:</th>
+    </tr>
+    <% @fatura.itens_faturas.each do |item| %>
+    <tr>
+      <td>
+        <%= item.descricao %>
+      </td>
+      <td>
+        <%= item.data_inicio.strftime("%d/%m/%Y") %> até <%= item.data_fim.strftime("%d/%m/%Y") %>
+      </td>
+      <td style="text-align: right;">
+        <%= number_to_currency(item.valor, :unit => "R$") %>
+      </td>
+    </tr>
+    <% end %>
+    <tr>
+      <td colspan="3" style="text-align: right;background-color: #1a215c;color: #fff;">
+        <%= number_to_currency(@fatura.valor, :unit => "R$") %>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <div style="font-size: 15px;text-align: center;">
+    <p>
+      Se tiver alguma dúvida relativa a esta fatura,favor contacte:
+    </p>
+    <p>
+      Luciane (manobra.transportes@yahoo.com.br) ou pelo telefone 019-982111344/011-975227788
+    </p>
+    <p style="color: #337ab7">
+      Favor efetuar o depósito, Banco Caixa Economica, Agência: 3046/Op:003/00000831-5
+    </p>
+    <div style="background-color: #9bbad4; padding: 5px">
+      OBRIGADO PELA CONFIÂNÇA!
+    </div>
+    <p style="text-align: right;">
+      Após o vencimento, juros e multa de mora de 10%am mês.
+    </p>
+  </div>
 </div>

@@ -23,6 +23,10 @@ class Fatura < ApplicationRecord
     Fatura.todos_status[self.status.to_s]
   end
 
+  def valor
+    self.itens_faturas.sum(:valor)
+  end
+
   private
 
   def update_status
