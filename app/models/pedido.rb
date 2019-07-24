@@ -1,7 +1,7 @@
 class Pedido < ApplicationRecord
   validates :placa, presence: true
 
-  default_scope { order(vencimento: :desc) }
+  default_scope { order("numero_fatura desc, vencimento desc") }
   
   before_validation :valida_placa
 
