@@ -37,4 +37,10 @@
   <dd><%= @funcionario.vencimento_da_integracao.strftime("%d/%m/%Y") %></dd>
   <dt>Vencimento CNH:</dt>
   <dd><%= @funcionario.vencimento_cnh.strftime("%d/%m/%Y") %></dd>
+  <dt>Nome dos filhos:</dt>
+  <dd><%= raw @funcionario.nome_dos_filhos.gsub("\n", "<br>") %></dd>
+  <dt>Estado civil:</dt>
+  <dd><%= @funcionario.vencimento_cnh.strftime("%d/%m/%Y") %></dd>
+  <dt>Nome do cônjuge:</dt>
+  <dd><%= @funcionario.vencimento_cnh.strftime("%d/%m/%Y") %></dd>
 </dl>
