@@ -104,14 +104,6 @@
         <%= @fatura.cliente.endereco %>
       </td>
     </tr>
-    <tr>
-      <td>
-        CEP:
-      </td>
-      <td>
-        <%= @fatura.cliente.endereco.scan(/CEP.*/).first.scan(/\d+/).join.sub(/([A-Z0-9]+)([A-Z0-9]{6})/, '\1.\2').sub(/([A-Z0-9]+)([A-Z0-9]{3})/, '\1-\2') rescue "" %>
-      </td>
-    </tr>
   </table>
   <br>
   <style type="text/css">
@@ -147,7 +139,7 @@
     <tr>
       <th>Relação de serviços:</th>
       <th>Data:</th>
-      <th>Valor Diária:</th>
+      <th>Valor:</th>
     </tr>
     <% @fatura.itens_faturas.each do |item| %>
     <tr>
@@ -174,7 +166,7 @@
       Se tiver alguma dúvida relativa a esta fatura,favor contacte:
     </p>
     <p>
-      Luciane (manobra.transportes@yahoo.com.br) ou pelo telefone 019-982111344/011-975227788
+      Luciane (manobra.transportes@yahoo.com.br) ou pelo telefone 019-981433810 / 019-39333254
     </p>
     <p style="color: #337ab7">
       Favor efetuar o depósito, Banco Caixa Economica, Agência: 3046/Op:003/00000831-5
