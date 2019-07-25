@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_19_153357) do
+ActiveRecord::Schema.define(version: 2019_07_25_164139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,24 @@ ActiveRecord::Schema.define(version: 2019_07_19_153357) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cliente_id"], name: "index_faturas_on_cliente_id"
+  end
+
+  create_table "funcionarios", force: :cascade do |t|
+    t.string "nome"
+    t.string "telefone"
+    t.string "email"
+    t.datetime "nascimento"
+    t.datetime "admissao"
+    t.string "rg"
+    t.string "cpf"
+    t.string "endereco"
+    t.string "funcao"
+    t.datetime "data_do_aso"
+    t.datetime "vencimento_do_aso"
+    t.datetime "vencimento_da_integracao"
+    t.datetime "vencimento_cnh"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "itens_faturas", force: :cascade do |t|

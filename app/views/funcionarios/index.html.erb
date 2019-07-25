@@ -1,0 +1,38 @@
+<div class="page-header">
+  <%= link_to new_funcionario_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    Novo Funcionario
+  <% end %>
+  <h1>Listando funcionarios</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Telefone</th>
+        <th>Email</th>
+        <th>Data do ASO</th>
+        <th>Vencimento do ASO</th>
+        <th>Vencimento da integração</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= content_tag_for(:tr, @funcionarios) do |funcionario| %>
+        <td><%= funcionario.nome %></td>
+        <td><%= funcionario.telefone %></td>
+        <td><%= funcionario.email %></td>
+        <td><%= funcionario.data_do_aso.strftime("%d/%m/%Y") %></td>
+        <td><%= funcionario.vencimento_do_aso.strftime("%d/%m/%Y") %></td>
+        <td><%= funcionario.vencimento_da_integracao.strftime("%d/%m/%Y") %></td>
+        <td><%= link_to 'Mostrar', funcionario %></td>
+        <td><%= link_to 'Editar', edit_funcionario_path(funcionario) %></td>
+        <td><%= link_to 'Apagar', funcionario, method: :delete, data: { confirm: 'Confirma?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

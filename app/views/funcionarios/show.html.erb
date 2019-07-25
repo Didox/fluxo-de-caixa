@@ -1,0 +1,40 @@
+<div class="page-header">
+  <%= link_to funcionarios_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Voltar
+  <% end %>
+  <%= link_to edit_funcionario_path(@funcionario), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Editar
+  <% end %>
+  <h1>Mostrar funcionario</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Nome:</dt>
+  <dd><%= @funcionario.nome %></dd>
+  <dt>Telefone:</dt>
+  <dd><%= @funcionario.telefone %></dd>
+  <dt>Email:</dt>
+  <dd><%= @funcionario.email %></dd>
+  <dt>Nascimento:</dt>
+  <dd><%= @funcionario.nascimento.strftime("%d/%m/%Y") %></dd>
+  <dt>Admissão:</dt>
+  <dd><%= @funcionario.admissao.strftime("%d/%m/%Y") %></dd>
+  <dt>Rg:</dt>
+  <dd><%= @funcionario.rg %></dd>
+  <dt>Cpf:</dt>
+  <dd><%= @funcionario.cpf %></dd>
+  <dt>Endereço:</dt>
+  <dd><%= @funcionario.endereco %></dd>
+  <dt>Função:</dt>
+  <dd><%= @funcionario.funcao %></dd>
+  <dt>Data do ASO:</dt>
+  <dd><%= @funcionario.data_do_aso.strftime("%d/%m/%Y") %></dd>
+  <dt>Vencimento do ASO:</dt>
+  <dd><%= @funcionario.vencimento_do_aso.strftime("%d/%m/%Y") %></dd>
+  <dt>Vencimento da integração:</dt>
+  <dd><%= @funcionario.vencimento_da_integracao.strftime("%d/%m/%Y") %></dd>
+  <dt>Vencimento CNH:</dt>
+  <dd><%= @funcionario.vencimento_cnh.strftime("%d/%m/%Y") %></dd>
+</dl>

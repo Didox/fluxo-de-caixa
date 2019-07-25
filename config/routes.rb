@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :funcionarios
   resources :faturas do
     resources :itens_faturas
   end

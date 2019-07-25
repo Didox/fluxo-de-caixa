@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  telefone: MyString
+  email: MyString
+  nascimento: 2019-07-25 13:41:39
+  admissao: 2019-07-25 13:41:39
+  rg: MyString
+  cpf: MyString
+  endereco: MyString
+  funcao: MyString
+  data_do_aso: 2019-07-25 13:41:39
+  vencimento_do_aso: 2019-07-25 13:41:39
+  vencimento_da_integracao: 2019-07-25 13:41:39
+  vencimento_cnh: 2019-07-25 13:41:39
+
+two:
+  nome: MyString
+  telefone: MyString
+  email: MyString
+  nascimento: 2019-07-25 13:41:39
+  admissao: 2019-07-25 13:41:39
+  rg: MyString
+  cpf: MyString
+  endereco: MyString
+  funcao: MyString
+  data_do_aso: 2019-07-25 13:41:39
+  vencimento_do_aso: 2019-07-25 13:41:39
+  vencimento_da_integracao: 2019-07-25 13:41:39
+  vencimento_cnh: 2019-07-25 13:41:39

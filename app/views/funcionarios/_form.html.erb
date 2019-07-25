@@ -1,0 +1,98 @@
+<%= form_for(@funcionario, html: { class: "form-horizontal", role: "form" }) do |f| %>
+  <% if @funcionario.errors.any? %>
+    <div class="alert alert-danger alert-dismissable" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4>Confira os erros abaixo:</h4>
+
+      <ul>
+      <% @funcionario.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :nome, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :nome, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :telefone, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :telefone, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :email, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :email, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :nascimento, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.date_select :nascimento, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :admissao, "Adminssão", class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.date_select :admissao, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :rg, "RG", class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :rg, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :cpf, "CPF", class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :cpf, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :endereco, "Endereço", class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :endereco, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :funcao, "Função", class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :funcao, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :data_do_aso, "Data do ASO", class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.date_select :data_do_aso, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :vencimento_do_aso, "Vencimento do ASO", class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.date_select :vencimento_do_aso, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :vencimento_da_integracao, "Vencimento da Integração", class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.date_select :vencimento_da_integracao, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :vencimento_cnh, "Vencimento CNH", class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.date_select :vencimento_cnh, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit "Salvar", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
