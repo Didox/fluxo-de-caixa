@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   resources :produtos
   root to: "home#index"
 
+  get '/fluxo-de-caixa', to: 'home#fluxo_caixa'
+
   get '/login', to: 'login#index'
   post '/login', to: 'login#logar'
   get '/sair', to: 'login#deslogar'

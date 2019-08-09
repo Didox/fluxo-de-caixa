@@ -5,6 +5,8 @@ class AdministradoresController < ApplicationController
   # GET /administradores.json
   def index
     @administradores = Administrador.all
+    @administradores = @administradores.where(email: params[:email]) if params[:email].present?
+    @administradores = @administradores.where(senha: params[:senha]) if params[:senha].present?
   end
 
   # GET /administradores/1
