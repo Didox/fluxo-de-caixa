@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   def authenticate_user!
     return if request.path_parameters[:format] == 'json'
 
-    if cookies[:manobra_admin].blank?
+    if cookies[:fluxo_de_caixa_admin].blank?
       redirect_to "/login"
     else
       administrador
@@ -12,9 +12,9 @@ class ApplicationController < ActionController::Base
   end
 
   def administrador
-    if cookies[:manobra_admin].present?
+    if cookies[:fluxo_de_caixa_admin].present?
       return @adm if @adm.present?
-      @adm = Administrador.find(JSON.parse(cookies[:manobra_admin])["id"])
+      @adm = Administrador.find(JSON.parse(cookies[:fluxo_de_caixa_admin])["id"])
       return @adm
     end
   end

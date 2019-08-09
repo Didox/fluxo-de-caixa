@@ -14,7 +14,7 @@ class LoginController < ApplicationController
         nome: user.nome,
         email: user.email
       }
-      cookies[:manobra_admin] = { value: value.to_json, expires: time, httponly: true }
+      cookies[:fluxo_de_caixa_admin] = { value: value.to_json, expires: time, httponly: true }
 
       redirect_to root_path
     else
@@ -24,7 +24,7 @@ class LoginController < ApplicationController
   end
 
   def deslogar
-    cookies[:manobra_admin] = nil
+    cookies[:fluxo_de_caixa_admin] = nil
     redirect_to login_path
   end
 
