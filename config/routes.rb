@@ -23,4 +23,10 @@ Rails.application.routes.draw do
   get '/login', to: 'login#index'
   post '/login', to: 'login#logar'
   get '/sair', to: 'login#deslogar'
+
+  post '/administradores/login', to: 'administradores#login'
+
+  match '/pedidos', to: 'application#options', via: :options
+  match '/administradores', to: 'application#options', via: :options
+  match '/administradores/login', to: 'application#options', via: :options
 end

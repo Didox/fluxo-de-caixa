@@ -1,17 +1,38 @@
 class AdministradoresController < ApplicationController
   before_action :set_administrador, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
 
   # GET /administradores
   # GET /administradores.json
   def index
     @administradores = Administrador.all
-    @administradores = @administradores.where(email: params[:email]) if params[:email].present?
-    @administradores = @administradores.where(senha: params[:senha]) if params[:senha].present?
   end
 
   # GET /administradores/1
   # GET /administradores/1.json
   def show
+  end
+
+  def login
+    if params[:email].blank? || params[:senha].blank?
+      render json: {message: "Email e senha obrigatório"}, status: 401
+      return
+    end
+
+    administradores = Administrador.all
+    administradores = administradores.where(email: params[:email])
+    administradores = administradores.where(senha: params[:senha])
+
+    if administradores.count > 0
+      administrador = administradores.first
+      render json: {
+        id: administrador.id,
+        nome: administrador.nome,
+        email: administrador.email
+      }, status: 200
+    else
+      render json: {message: "Email ou senha não encontrado"}, status: 401
+    end
   end
 
   # GET /administradores/new

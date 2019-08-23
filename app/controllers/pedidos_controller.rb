@@ -1,5 +1,6 @@
 class PedidosController < ApplicationController
   before_action :set_pedido, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
 
   # GET /pedidos
   # GET /pedidos.json

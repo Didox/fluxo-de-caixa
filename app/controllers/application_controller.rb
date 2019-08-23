@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action  :authenticate_user!, :cross_domain
+  skip_before_action :verify_authenticity_token, only: [:options]
 
   def authenticate_user!
     return if request.path_parameters[:format] == 'json'
@@ -9,6 +10,11 @@ class ApplicationController < ActionController::Base
     else
       administrador
     end
+  end
+
+  def options
+    cross_domain
+    render json: {}, status: 200
   end
 
   def administrador
