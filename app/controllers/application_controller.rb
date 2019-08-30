@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
 
   def cross_domain
     headers['Access-Control-Allow-Origin'] = '*'
-    headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS, HEAD, DELETE'
+    headers['Access-Control-Allow-Methods'] = 'POST, PUT, GET, OPTIONS, HEAD, DELETE'
     headers['Access-Control-Request-Method'] = '*'
     headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, MaratonaKeyAccess'
   end

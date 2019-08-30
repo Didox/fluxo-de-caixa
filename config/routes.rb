@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
   post '/administradores/login', to: 'administradores#login'
 
+  match '/pedidos/:pedido_id', to: 'application#options', via: :options
   match '/pedidos', to: 'application#options', via: :options
   match '/administradores', to: 'application#options', via: :options
   match '/administradores/login', to: 'application#options', via: :options
