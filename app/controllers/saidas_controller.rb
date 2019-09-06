@@ -1,5 +1,6 @@
 class SaidasController < ApplicationController
   before_action :set_saida, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
 
   # GET /saidas
   # GET /saidas.json
@@ -104,6 +105,6 @@ class SaidasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def saida_params
-      params.require(:saida).permit(:placa, :data_emissao_fatura, :descricao, :numero_fatura, :vencimento, :valor)
+      params.require(:saida).permit(:placa, :data_emissao_fatura, :descricao, :numero_fatura, :vencimento, :valor, :status)
     end
 end
